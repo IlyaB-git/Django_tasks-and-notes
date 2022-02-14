@@ -1,0 +1,12 @@
+{% for cat in categories %}
+{% load static %}
+    <div class="del_cat_el">
+    <form method="post">
+        {% csrf_token %}
+        {{cat}}
+        <input type="hidden" name="del_cat" value="{{cat.pk}}">
+        <input type="hidden" name="form_sel" value="del_cat">
+        <input type="submit" value="" class="btn_del_cat" style="background-image: url({% static "app/images/del.png" %});">
+    </div>
+    </form>
+{% endfor %}

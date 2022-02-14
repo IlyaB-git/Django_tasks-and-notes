@@ -1,0 +1,48 @@
+{% load static %}
+{% load humanize %}
+{% for task in tasks %}
+<div class="task0">
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="task_id" value="{{task.pk}}">
+        {% if task.complete %}
+            <input type="hidden" name="form_sel" value="mark_task_uncomplete">
+            <input type="submit" value="" style="background-image: url({% static "app/images/checkbox1.png" %});" class="btn_complete_task">
+        {% else %}
+            <input type="hidden" name="form_sel" value="mark_task_complete">
+            <input type="submit" value="" style="background-image: url({% static "app/images/checkbox0.png" %});" class="btn_complete_task">
+        {% endif %}
+    </form>
+    <div class="task" style="border: {{task.category.color}} solid 2px;">   
+        <div>
+            <h3{% if task.complete %}
+            class = "task_done" {% endif %}
+            >{{task.title}}</h3>
+            <tt>
+            Категория: {{task.category}}<br>{{task.details}}<br>
+            {% if task.date %}
+            {{task.date|naturalday}}
+            {% endif %}
+            {% if task.time %}
+                {{task.time}} 
+            {% endif %}
+            </tt>
+        </div>
+        <div class='menu_for_task'>
+            <form class="del_form" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="form_sel" value="edit_task">
+                <input type="hidden" name="task_id" value="{{task.pk}}">
+                <input type="submit" value="" style="background-image: url({% static 'app/images/edit.png' %});" class="btn_task_del">
+            </form>
+            <form class="del_form" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="form_sel" value="del_task">
+                <input type="hidden" name="task_id" value="{{task.pk}}">
+                <input type="submit" value="" style="background-image: url({% static 'app/images/del.png' %});" class="btn_task_del">
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+

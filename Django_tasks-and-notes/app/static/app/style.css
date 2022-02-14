@@ -1,0 +1,350 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+header {
+    display: flex;
+    background-color: #f1f7f4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+header div {
+    padding-top: 6px;
+}
+nav {
+    display: none;
+    position: fixed;
+    width: 300px;
+    height: 200px;
+    background-color: #fff;
+    top: 42px;
+    right: 5px;
+    border: #000 solid 1px;
+    text-align: center;
+}
+header img {
+    height: 35px;
+    margin: 3px;
+    cursor: pointer;
+}
+header a {
+    height: 41px;
+}
+main {
+    margin-top: 50px
+}
+.add_el {
+    background-color: rgb(249, 255, 163);
+    height: 30px;
+    font-size:larger;
+    cursor: pointer;
+}
+
+/* заметки */
+.note {
+    display: inline-block;
+    border-radius: 7px;
+    width: 300px;
+    border: 50px;
+    background-color: #f0fdff;
+    margin: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.note .after {
+    display: none;
+}
+.note:hover {
+    background-color: #fff;
+    content: attr(hover_text);
+}
+.note:hover .del_form {
+    display: inline-block;
+}
+.note:hover img {
+    max-height: 400px;
+    width: 285px;
+}
+.note:hover .after {
+    display: inline;
+}
+.note:hover .before {
+    display: none;
+}
+.note h3 {
+    margin: 5px;
+}
+#add_note {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    left: 0; top: 0;
+    right: 0; bottom: 0;
+    width: 50%;
+    height: 80%;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    border: #000 solid 1px;
+}
+#add_note:target {
+    display: block;
+}
+#btn_notes {
+    display: block;
+    width: 50%;
+    float: right;
+    cursor: pointer;
+    border-radius: 5px;
+}
+#btn_notes:hover {
+    background-color: #86ffff;
+}
+#notes {
+    display: flex;
+    flex-flow: row wrap;
+    width: 50%;
+    justify-content: center;
+    margin-top: 41px;
+    height: calc(100% - 41px);
+    float: right;
+    overflow-y: scroll;
+    text-align: center;
+    align-items: stretch;
+}
+.note_img {
+    width: 25px;
+    max-height: 20px;
+}
+.btn_note_del {
+    background: transparent;
+    width: 15px;
+    height: 15px;
+    background-size: 15px, 15px;
+    border: 0;
+    margin: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+.btn_note_del:hover {
+    opacity: 70%;
+}
+
+
+/* задачи */
+.task {
+    display: flex;
+    justify-content: space-between;
+    vertical-align: middle;
+    background-color: #f0fdff;
+    border-radius: 7px;
+    width: 100%;
+    padding: 3px;
+    margin: 0 0 5px 0;
+}
+.task:hover {
+    background-color: #fff;
+}
+.task:hover .del_form {
+    display: inline-block;
+    align-self: center;
+}
+.task h3 {
+    margin: 0 3px;
+}
+.task tt {
+    display: none;
+}
+.task .menu_for_task {
+    display: flex;
+    vertical-align: center;
+}
+.task:hover tt {
+    display: inline;
+}
+.add_btn {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    margin: 0  auto 4px auto;
+    background-color: rgb(75, 168, 255);
+    border: 1px;
+}
+#add_task:target {
+    display: block;
+}
+#btn_tasks {
+    display: block;
+    width: 50%;
+    float: left;
+    cursor: pointer;
+    border-radius: 5px;
+}
+#btn_tasks:hover {
+    background-color: #86ffff;
+}
+#tasks {
+    margin-top: 41px;
+    display: inline-block;
+    width: 50%;
+    height: calc(100% - 46px);
+    overflow-y: scroll;
+}
+#tasks::-webkit-scrollbar {
+    display: none;
+}
+.category_in {
+    font-size: 20px;
+}
+.task0 {
+    display: flex;
+    align-items: center;
+}
+.task0 img {
+    width: 25px;
+    margin: 9px;
+}
+.task_done {
+    text-decoration: line-through;
+    opacity: 80%;
+}
+.del_form {
+    display: none;
+}
+.btn_complete_task {
+    background: transparent;
+    width: 25px;
+    height: 25px;
+    background-size: 25px, 25px;
+    border: 0;
+    cursor: pointer;
+    margin: 5px;
+}
+.btn_complete_task:hover {
+    opacity: 70%;
+}
+.btn_task_del {
+    background: transparent;
+    width: 15px;
+    height: 15px;
+    background-size: 15px, 15px;
+    border: 0;
+    margin: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+.btn_task_del:hover {
+    opacity: 70%;
+}
+
+.close {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    height: 30px;
+    transform: translate(-50%, -120%)
+}
+.align_center {
+    text-align: center;
+}
+.title_in {
+    font-size: 25px;
+}
+.add {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    left: 0; top: 20px;
+    right: 0; bottom: 0;
+    width: 50%;
+    /* min-height: 450px; */
+    height: 80%;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    border: #000 solid 1px;
+}
+.add img {
+    vertical-align: middle;
+    cursor: pointer;
+}
+body img:hover {
+    opacity: 70%;
+}
+.add input {
+    margin: 10px;
+}
+.add button {
+    text-align: center;
+}
+
+header h2 {
+    margin: 0;
+}
+#div_near_btn_tasks {
+    display: none;
+    width: 10%;
+    height: 27px;
+    float: left;
+}
+#div_div_near_btn_notes {
+    width: 41px;
+    height: 27px;
+}
+#div_near_btn_notes {
+    display: none;
+    width: 10%;
+    height: 27px;
+    float:right;
+}
+#notes::-webkit-scrollbar {
+    display: none;
+}
+#add_details_task {
+    display: none;
+}
+#add_new_category {
+    display: none;
+}
+#add_date_time {
+    display: none;
+}
+.close_add_atr {
+    height: 15px;
+}
+.btn_del_cat {
+    background: transparent;
+    height: 20px;
+    width: 20px;
+    background-size: 20px 20px;
+    border: 0;
+    cursor: pointer;
+}
+.btn_del_cat:hover {
+    opacity: 70%;
+}
+.del_cat_el {
+    align-items: center;
+    background-color: #ddfaff;
+    border-radius: 5px;
+    margin: 3px;
+}
+.del_cat_el input {
+    vertical-align: middle;
+}
+#content {
+    display: flex;
+    justify-content: space-between;
+}
+.center {
+    text-align: center;
+}
+.width_100 {
+    width: 100%;
+}

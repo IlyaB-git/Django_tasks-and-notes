@@ -1,0 +1,17 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'app/style.css' %}">
+    <script type="text/javascript" src="{% static 'app/scripts.js' %}"></script>
+    <title>Задачи и Заметки</title>
+</head>
+<body>
+    
+{% block menu %}{% endblock %}
+
+{% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% extends "app/base.html" %}
+{% load app_tags %}
+{% load static %}
+{% block menu %}
+<header>
+    <a href="{% url 'deleted' %}"><img src="{% static "app/images/trash.png" %}" alt="корзина" class="avatar"></a>
+    <div id="div_near_btn_tasks"></div>
+    <div id="btn_tasks">
+        <h2 id="btn_tasks_h" onclick="show_tasks()">Задачи</h2>
+    </div>
+    <div id="btn_notes">
+        <h2 id="btn_notes_h" onclick="show_notes()">Заметки</h2>
+    </div>
+    <div id="div_near_btn_notes"></div>
+    <img src="{% static "app/images/avatar.png" %}" alt="акаунт" class="avatar" onclick="accountMenu()">
+</header>
+<nav id="account_menu">
+    <div class="element_nav_menu">
+
+    </div>
+    {% login_form_tag %}
+</nav>
+{% endblock %}
+
+{% block content %}
+
+
+<section id="tasks">
+    <div class="center"><a href="#add_task"><img src="{% static "app/images/plus.png" %}" alt="добавить задачу" width="40"></a></div>
+    {% tasks_tag %}
+</section>
+<section id="notes">
+    <div class="width_100 center"><a href="#add_note"><img src="{% static "app/images/plus.png" %}" alt="добавить заметку" width="40"></a></div>
+    {% notes_tag %}
+</div>
+</section>
+
+<div id="add_task" class="add">
+    <a href="#"><img class="close" src="{% static "app/images/close.png" %}" alt="закрыть"></a>
+    {% add_task_tag %}
+</div>
+<div id="add_note" class="add">
+    <br>
+    <a href="#"><img class="close" src="{% static "app/images/close.png" %}" alt="закрыть"></a>
+    {% add_note_tag %}
+</div>
+
+{% endblock %}

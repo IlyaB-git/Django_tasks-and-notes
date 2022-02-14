@@ -1,0 +1,30 @@
+{% load static %}
+{% load app_tags %}
+<br>
+<div id="add_new_task">
+<form action="" method="post" id="form_new_task">
+    {% csrf_token %}
+    Категория {{form.category}}
+        <img onmousedown="addNewCategory()" id="btn_add_new_category" height="30" src="{% static "app/images/edit.png" %}" alt="редактировать"><br>
+    {{ form.title }}
+    <img onmousedown="addDetailstotask()" id="btn_add_details_task" height="30" src="{% static "app/images/details.png" %}" alt="добавить примечание">
+    <img onmousedown="addDateTime()" id="btn_add_date_time" height="30" src="{% static "app/images/calendar.png" %}" alt="добавить дату"><br>
+    <div id="add_details_task">{{form.details}}
+        <img class="close_add_atr" onmousedown="closeAddDetailsTask()" src="{% static "app/images/close.png" %}" alt="закрыть"></div>    
+    <div id="add_date_time">{{form.time}}{{form.date}}
+        <img class="close_add_atr" onmousedown="closeAddDateTime()" src="{% static "app/images/close.png" %}" alt="закрыть"></div>
+    <input type="hidden" name="form_sel" value="add_task">
+    <input type="submit" name="" id="" value="Добавить" class="add_el">
+</form></div>
+<div id="add_new_category">
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form_new_cat.new_category }}
+    <img class="close_add_atr" onmousedown="closeAddNewCategory()" src="{% static "app/images/close.png" %}" alt="закрыть"><br>
+    Цвет категории {{form_new_cat.cat_color}}<br>
+    <input type="hidden" name="form_sel" value="add_cat">
+    <input type="submit" name="" id="" value="Создать" class="add_el">
+</form>
+<div id="categories">
+    {% categories_tasks_tag %}
+</div></div>
