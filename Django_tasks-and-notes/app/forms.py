@@ -11,7 +11,7 @@ class NewTask(forms.ModelForm):
         self.fields['category'].empty_label = None
     class Meta:
         model = Tasks
-        fields = ['title', 'details']
+        fields = ['title', 'details', 'category']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'title_in', 'placeholder': 'Задача'}),
             'details': forms.Textarea(attrs={'placeholder': 'Текст'})

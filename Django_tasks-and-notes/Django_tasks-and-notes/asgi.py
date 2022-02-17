@@ -1,5 +1,5 @@
 """
-ASGI config for newmysite project.
+ASGI config for Django_tasks-and-notes project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'newmysite.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Django_tasks-and-notes.settings')
 
 application = get_asgi_application()
