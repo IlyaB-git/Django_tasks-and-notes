@@ -21,11 +21,30 @@ def notes_tag(context):
     context['notes'] = Notes.objects.all().order_by('-pk').filter(deleted=False)
     return context
 
+@register.inclusion_tag('app/notes.html', takes_context=True)
+def deleted_notes_tag(context):
+    context['notes'] = Notes.objects.all().order_by('-pk').filter(deleted=True)
+    return context
+
 @register.inclusion_tag('app/add_task.html', takes_context=True)
-def add_task_tag(context):
-    context['form'] = NewTask
+def add_task_tag(context, edit=False, task_id=None):
+    context['form'] = NewTask()
+    if edit == True:
+        title = Tasks.objects.get(pk=task_id).title
+        details = Tasks.objects.get(pk=task_id).details
+        category = Tasks.objects.get(pk=task_id).category
+        date = Tasks.objects.get(pk=task_id).date
+        time = Tasks.objects.get(pk=task_id).time
+        context['form'] = NewTask({
+            'title': title,
+            'details': details,
+            'category': category,
+            'date': date,
+            'time': time
+            })
     context['form_new_cat'] = NewCategory
     context['categories'] = CategoriesTasks.objects.all().filter(deleted = False)
+    context['edit'] = edit
     return context
 
 @register.inclusion_tag('app/add_note.html', takes_context=True)

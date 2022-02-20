@@ -37,6 +37,8 @@ def home(request):
             task = Tasks.objects.get(pk=request.POST.get('task_id'))
             task.deleted = True
             task.save()
+        elif form_sel == 'edit_task':
+            return redirect('/edit_task/' + request.POST.get('task_id'))
         elif form_sel =='del_note':
             note = Notes.objects.get(pk=request.POST.get('note_id'))
             note.deleted = True
@@ -44,12 +46,21 @@ def home(request):
         elif form_sel == 'eidt_note':
             note = Notes.objects.get(pk=request.POST.get('note_id'))
             return redirect('/#add_note')
-    return render(request, 'app/home.html')
+    return render(request, 'app/home.html', {'edit_task': False})
 
 
 def deleted(request):
     return render(request, 'app/deleted.html')
 
+def edit_task(request, task_id):
+    if request.POST:
+        form_sel = request.POST.get('form_sel')
+        if form_sel == 'edit_task':
+            form = NewTask(request.POST)
+            form.edit_task(task_id=task_id)
+            return redirect('/')
+
+    return render(request, 'app/edit_task.html', {'edit_task': True, 'task_id': task_id})
 
 
 class register:

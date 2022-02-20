@@ -1,0 +1,10 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% load app_tags %}
+
+{% block content %}
+<div class="edit_task">
+<br>
+{% add_task_tag edit=True task_id=task_id %}
+</div>
+{% endblock %}

@@ -11,7 +11,7 @@ class NewTask(forms.ModelForm):
         self.fields['category'].empty_label = None
     class Meta:
         model = Tasks
-        fields = ['title', 'details', 'category']
+        fields = ['title', 'details', 'category', 'date', 'time']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'title_in', 'placeholder': 'Задача'}),
             'details': forms.Textarea(attrs={'placeholder': 'Текст'})
@@ -20,6 +20,16 @@ class NewTask(forms.ModelForm):
     date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), required=False)
     category = forms.ModelChoiceField(widget=forms.Select(attrs={'class': 'category_in'}),  queryset=CategoriesTasks.objects.filter(deleted=False))
     
+    def edit_task(self, task_id):
+        if self.is_valid():
+            data = self.cleaned_data
+            task = Tasks.objects.get(pk=task_id)
+            task.title = data['title']
+            task.details = data['details']
+            task.category = data['category']
+            task.date = data['date']
+            task.time = data['time']
+            task.save()
 
 
 
@@ -33,6 +43,10 @@ class NewCategory(forms.Form):
         model.save()
 
 class NewNote(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['details'].required = False
+        self.fields['image'].required = False
     color = forms.CharField(widget=forms.TextInput(attrs={'type': 'color'}))
     class Meta:
         model = Notes
@@ -41,7 +55,6 @@ class NewNote(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'title_in', 'placeholder': 'Заметка'}),
             'details': forms.Textarea(attrs={'placeholder': 'Текст'})
         }
-
 
 class LoginUser(forms.Form):
     login = forms.EmailField()

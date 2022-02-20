@@ -7,13 +7,13 @@
     {% if note.image %}
         <a target="_blank" href="{{note.image.url}}"><img class="note_img" src="{{note.image.url}}"></a>
     {% endif %}
-    <form class="del_form" method="post">
+    <form class="edit_form" method="post">
         {% csrf_token %}
         <input type="hidden" name="form_sel" value="eidt_note">
         <input type="hidden" name="note_id" value="{{note.pk}}">
         <input type="submit" value="" style="background-image: url({% static 'app/images/edit.png' %});" class="btn_note_del">
     </form>
-    <form class="del_form" method="post">
+    <form class="edit_form" method="post">
         {% csrf_token %}
         <input type="hidden" name="form_sel" value="del_note">
         <input type="hidden" name="note_id" value="{{note.pk}}">

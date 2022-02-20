@@ -1,11 +1,11 @@
 <div>
-<form action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.title}}<br>
-    {{form.details}}<br>
-    Цвет заметки  {{form.color}}<br>
-    Изображение {{form.image}}<br>
-    <input type="hidden" name="form_sel" value="add_note">
-    <input type="submit" class="add_el" value="Добавить">
-</form>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.title}}<br>
+        {{form.details}}<br>
+        Цвет заметки  {{form.color}}<br>
+        Изображение {{form.image}}<br>
+        <input type="hidden" name="form_sel" value="add_note">
+        <input type="submit" class="add_el" value="Добавить">
+    </form>
 </div>

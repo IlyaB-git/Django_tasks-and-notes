@@ -1,3 +1,6 @@
+
+<!-- add_task отвечает как за добавление новой записи, так и за рекдактирование старой -->
+
 {% load static %}
 {% load app_tags %}
 <br>
@@ -13,8 +16,15 @@
         <img class="close_add_atr" onmousedown="closeAddDetailsTask()" src="{% static "app/images/close.png" %}" alt="закрыть"></div>    
     <div id="add_date_time">{{form.time}}{{form.date}}
         <img class="close_add_atr" onmousedown="closeAddDateTime()" src="{% static "app/images/close.png" %}" alt="закрыть"></div>
-    <input type="hidden" name="form_sel" value="add_task">
-    <input type="submit" name="" id="" value="Добавить" class="add_el">
+    
+    {% if edit %}
+    <a href="/">Отмена</a>
+        <input type="hidden" name="form_sel" value="edit_task">
+        <input type="submit" name="" id="" value="Изменить" class="add_el">
+    {% else %}
+        <input type="hidden" name="form_sel" value="add_task">
+        <input type="submit" name="" id="" value="Добавить" class="add_el">
+    {% endif %}
 </form></div>
 <div id="add_new_category">
 <form action="" method="post">
