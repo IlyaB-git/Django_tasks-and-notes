@@ -5,7 +5,14 @@
         {{form.details}}<br>
         Цвет заметки  {{form.color}}<br>
         Изображение {{form.image}}<br>
-        <input type="hidden" name="form_sel" value="add_note">
-        <input type="submit" class="add_el" value="Добавить">
+        {% if edit %}
+            <input type="checkbox" name="delete_img"> Удалить изображение <br>
+            <a href="/">Отмена</a>
+            <input type="hidden" name="form_sel" value="edit_note">
+            <input type="submit" value="Изменить" class="add_el">
+        {% else %}
+            <input type="hidden" name="form_sel" value="add_note">
+            <input type="submit" class="add_el" value="Добавить">
+        {% endif %}
     </form>
 </div>

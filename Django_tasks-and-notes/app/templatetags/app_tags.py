@@ -48,8 +48,23 @@ def add_task_tag(context, edit=False, task_id=None):
     return context
 
 @register.inclusion_tag('app/add_note.html', takes_context=True)
-def add_note_tag(context):
-    context['form'] = NewNote
+def add_note_tag(context, edit=False, note_id=None):
+    context['form'] = NewNote()
+    if edit == True:
+        title = Notes.objects.get(pk=note_id).title
+        details = Notes.objects.get(pk=note_id).details
+        image = Notes.objects.get(pk=note_id).image
+        audio = Notes.objects.get(pk=note_id).audio
+        color = Notes.objects.get(pk=note_id).color
+        context['form'] = NewNote({
+            'title': title,
+            'details': details,
+            'image': image,
+            'audio': audio,
+            'color': color
+        })
+    context['edit'] = edit
+
     return context
 
 @register.inclusion_tag('app/login.html', takes_context=True)

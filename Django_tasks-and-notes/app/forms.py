@@ -55,6 +55,18 @@ class NewNote(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'title_in', 'placeholder': 'Заметка'}),
             'details': forms.Textarea(attrs={'placeholder': 'Текст'})
         }
+    def edit_note(self, note_id, delete_img=None):
+        if self.is_valid():
+            data = self.cleaned_data
+            note = Notes.objects.get(pk=note_id)
+            note.title = data['title']
+            note.details = data['details']
+            note.color = data['color']
+            if delete_img:
+                note.image = None
+            elif data['image']:
+                note.image = data['image']
+            note.save()
 
 class LoginUser(forms.Form):
     login = forms.EmailField()

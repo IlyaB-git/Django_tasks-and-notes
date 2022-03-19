@@ -179,7 +179,7 @@ main {
 #add_task:target {
     display: block;
 }
-#edit_task:target {
+#edit:target {
     display: block;
 }
 #btn_tasks {
@@ -273,7 +273,7 @@ main {
     margin: auto;
     border: #000 solid 1px;
 }
-.edit_task {
+.edit {
     position: absolute;
     background-color: #fff;
     left: 0; top: 20px;
@@ -286,14 +286,14 @@ main {
     margin: auto;
     border: #000 solid 1px;
 }
-.edit_task img {
+.edit img {
     vertical-align: middle;
     cursor: pointer;
 }
-.edit_task input {
+.edit input {
     margin: 10px;
 }
-.edit_task button {
+.edit button {
     text-align: center;
 }
 .add img {
